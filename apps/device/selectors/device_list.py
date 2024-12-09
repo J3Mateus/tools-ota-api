@@ -1,0 +1,18 @@
+from django.db.models.query import QuerySet
+from apps.device.filter import DeviceFilter
+from apps.device.models import Device
+
+def device_list(*, filters=None) -> QuerySet[Device]:
+    """
+    Lista instâncias de Device com base nos filtros fornecidos.
+
+    Args:
+        filters (dict, optional): Filtros para aplicação.
+
+    Returns:
+        QuerySet[Device]: Instâncias filtradas do modelo Device.
+    """
+    filters = filters or {}
+    qs = Device.objects.all()
+
+    return DeviceFilter(filters, qs).qs

@@ -1,0 +1,2 @@
+from apps.firmware.selectors.firmware_list import firmware_list
+from apps.firmware.selectors.firmware_list_by_id import firmware_list_by_id

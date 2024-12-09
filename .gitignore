@@ -1,0 +1,20 @@
+# do NOT track Python compilation files
+*.py[cod]
+*.pyc
+_python_/*
+_pycache_/
+_pycache_/*
+
+# do NOT track coverage files/folders
+media_root
+run
+logs
+# IDE
+.vscode
+.idea
+
+# VENV
+venv
+
+# Config
+.env

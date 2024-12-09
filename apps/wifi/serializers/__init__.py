@@ -1,0 +1,10 @@
+from apps.wifi.serializers.input_serializer import WifiCreateInputSerializer
+from apps.wifi.serializers.input_serializer import WifiUpdateInputSerializer
+
+from apps.wifi.serializers.output_serializer import WifiCreateOutputSerializer
+from apps.wifi.serializers.output_serializer import WifiByIDOutputSerializer
+from apps.wifi.serializers.output_serializer import WifiListOutputSerializer
+from apps.wifi.serializers.output_serializer import WifiUpdateOutputSerializer
+from apps.wifi.serializers.output_serializer import WifiOutputDeleteSerializer
+
+from apps.wifi.serializers.filter_serializer import WifiFilterSerializer

@@ -1,0 +1,4 @@
+from apps.device.selectors.device_list import device_list
+from apps.device.selectors.device_list_by_id import device_list_by_id
+from apps.device.selectors.device_get_firmware import device_get_firmware
+from apps.device.selectors.device_get_current_version import device_get_current_version
