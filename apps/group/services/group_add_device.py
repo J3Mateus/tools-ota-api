@@ -1,6 +1,5 @@
 from apps.core.exceptions import NotFoundError
 from apps.device.models.device import Device
-from apps.device.models.device_version import DeviceVersion
 from apps.group.models import Group
 from django.db import transaction
 
@@ -27,12 +26,6 @@ def group_add_device(*, device_id  : str, group_id : str) -> Group:
     
     if device is None:
         raise NotFoundError(extra={"device_id": device_id})
-
-  
-    device, create = DeviceVersion.objects.update_or_create(
-        device=device,
-        defaults={"version": group.firmware.version}
-    )
     
     group.devices.add(device)
     

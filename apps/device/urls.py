@@ -6,7 +6,8 @@ from apps.device.api import (
     DeviceByIDApi,
     DeviceDeleteApi,
     DeviceGetFirmwareApi,
-    DeviceGetCurrentVersionApi
+    DeviceGetCurrentVersionApi,
+    DeviceUpdateVersionCurrentApi
 )
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
             (
                 [
                     path("", DeviceCreateApi.as_view(), name="create_device"),
+                    path("link/<str:device_id>/<str:firmware_id>/", DeviceUpdateVersionCurrentApi.as_view(), name="link_device"),
                 ],
                 "create",
             )

@@ -1,5 +1,4 @@
 from apps.core.exceptions import NotFoundError
-from apps.device.models.device_version import DeviceVersion
 from apps.firmware.models.firmware import Firmware
 from apps.group.models import Group
 from django.db import transaction
@@ -28,12 +27,7 @@ def group_add_firmware(*,group_id: str, firmware_id: str) -> Group:
     if firmware is None:
         raise NotFoundError(extra={"firmware_id": firmware_id})
 
-    for device in group.devices.all():
-        device = DeviceVersion.objects.update_or_create(
-            device=device,
-            defaults={"version": firmware.version}
-        )
-    
+
     group.firmware = firmware
     group.full_clean()
     group.save()
