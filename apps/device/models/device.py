@@ -26,7 +26,7 @@ class Device(BaseModel):
             return self.firmware
 
         # Verificar se o dispositivo está associado a um grupo ativo
-        group = self.groups.filter(active=True).first()  # Obtém o primeiro grupo ativo
+        group = self.groups.filter(is_deleted=False).first()  # Obtém o primeiro grupo ativo
         if group and group.firmware:
             return group.firmware
 
