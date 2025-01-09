@@ -6,3 +6,6 @@ from apps.device.api.device_list_by_id_api import DeviceByIDApi
 from apps.device.api.device_get_firmware_api import DeviceGetFirmwareApi
 from apps.device.api.device_get_current_version import DeviceGetCurrentVersionApi
 from apps.device.api.device_update_version_current import DeviceUpdateVersionCurrentApi
+from apps.device.api.device_add_firmware_api import DeviceAddFirmwareApi
+from apps.device.api.device_add_wifi_api import DeviceAddWifiApi
+from apps.device.api.device_initialize_ota_api import DeviceInitializeOtaApi

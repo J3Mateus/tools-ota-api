@@ -12,3 +12,6 @@ from apps.group.serializers.input_serializer import GroupAddDeviceInputSerialize
 from apps.group.serializers.output_serializer import GroupAddDeviceOutputSerializer
 from apps.group.serializers.input_serializer import GroupAddWifiInputSerializer
 from apps.group.serializers.output_serializer import GroupAddWifiOutputSerializer
+from apps.group.serializers.input_serializer import GroupAPIKeyCreateInputSerializer
+from apps.group.serializers.input_serializer import GroupRemoveDeviceInputSerializer
+from apps.group.serializers.output_serializer import GroupRemoveDeviceOutputSerializer

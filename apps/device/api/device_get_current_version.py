@@ -3,12 +3,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 
+from apps.core.permission.api_key_permission import APIKeyPermission
 from apps.device.selectors import device_get_current_version
 from apps.device.serializers.output_serializer import DeviceGetCurrentVersionOutputSerializer
 
 class DeviceGetCurrentVersionApi(APIView):
     output_serializer = DeviceGetCurrentVersionOutputSerializer
-
+    permission_classes = [APIKeyPermission]
+    
     @swagger_auto_schema(
         tags=["Device"],
         operation_summary="Obter a versão atual do firmware",

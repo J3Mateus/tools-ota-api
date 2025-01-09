@@ -1,10 +1,11 @@
 from apps.device.models import Device
 from django.db import transaction
 
+from apps.users.models import BaseUser
 from utils import get_object
 
 @transaction.atomic
-def device_create(*, code: str) -> Device:
+def device_create(*, code: str,user :BaseUser) -> Device:
     """
     Cria um novo dispositivo.
 
@@ -21,7 +22,9 @@ def device_create(*, code: str) -> Device:
         return device
 
     instance_device = Device(
-        code=code
+        code=code,
+        created_by=user
     )
+    
     instance_device.save()
     return instance_device

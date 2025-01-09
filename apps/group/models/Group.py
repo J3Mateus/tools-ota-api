@@ -4,6 +4,7 @@ import uuid
 from apps.common.models import BaseModel
 from apps.firmware.models import Firmware
 from apps.device.models import Device
+from apps.users.models import UserAPIKey
 from apps.wifi.models import Wifi
 
 class Group(BaseModel):
@@ -26,13 +27,28 @@ class Group(BaseModel):
         null=True,  # Allow nulls temporarily
         blank=True  # Allow blank temporarily
     )
-
     devices = models.ManyToManyField(
         Device,
         through='GroupDevice',
         related_name='groups',
         verbose_name='Dispositivos do Grupo',
         through_fields=('group', 'device'),
+        null=True,  # Allow nulls temporarily
+        blank=True  # Allow blank temporarily
+    )
+    user = models.ForeignKey(
+        'users.BaseUser',
+        on_delete=models.CASCADE,
+        related_name="users",
+        verbose_name="Usuario associado ao grupo",
+        null=True,  # Allow nulls temporarily
+        blank=True  # Allow blank temporarily
+    )
+    api_key = models.ForeignKey(
+        UserAPIKey,
+        on_delete=models.CASCADE,
+        related_name="api_keys",
+        verbose_name="Chave de API associada ao grupo",
         null=True,  # Allow nulls temporarily
         blank=True  # Allow blank temporarily
     )
@@ -76,7 +92,6 @@ class Group(BaseModel):
                 'name': self.firmware.name,
                 'version': self.firmware.version,
                 'code': self.firmware.code,
-                'link_bin': self.firmware.link_bin,
             }
 
         devices_data = []

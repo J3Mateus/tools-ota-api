@@ -5,11 +5,15 @@ from drf_yasg.utils import swagger_auto_schema
 from apps.device.serializers import DeviceListOutputSerializer, DeviceFilterSerializer
 from apps.device.selectors import device_list
 from apps.api.pagination import LimitOffsetPagination, get_paginated_response
+from rest_framework.permissions import IsAuthenticated
+
+from apps.users.selectors import user_get_login_data
 
 class DeviceListApi(APIView):
     class Pagination(LimitOffsetPagination):
         default_limit = 20
 
+    permission_classes = [IsAuthenticated]
     output_serializer = DeviceListOutputSerializer
     filter_serializer = DeviceFilterSerializer
 
@@ -22,14 +26,14 @@ class DeviceListApi(APIView):
     def get(self, request):
         filters_serializer = self.filter_serializer(data=request.query_params)
         filters_serializer.is_valid(raise_exception=True)
-
+        user = user_get_login_data(user=request.user)
         all_records = request.query_params.get("all")
         if all_records == "true":
-            devices = device_list(filters=filters_serializer.validated_data)
+            devices = device_list(filters=filters_serializer.validated_data,user=user)
             serializer = self.output_serializer(devices, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-        devices = device_list(filters=filters_serializer.validated_data)
+        devices = device_list(filters=filters_serializer.validated_data,user=user)
         return get_paginated_response(
             pagination_class=self.Pagination,
             serializer_class=self.output_serializer,

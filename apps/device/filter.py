@@ -8,4 +8,4 @@ class DeviceFilter(django_filters.FilterSet):
     """
     class Meta:
         model = Device
-        fields = ("uuid", "code")
+        fields = ("uuid", "code","is_deleted")

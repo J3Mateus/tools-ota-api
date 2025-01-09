@@ -48,7 +48,7 @@ urlpatterns = [
         include(
             (
                 [
-                    path("<uuid:uuid>", WifiDeleteApi.as_view(), name="delete_wifi"),
+                    path("<uuid:uuid>/", WifiDeleteApi.as_view(), name="delete_wifi"),
                 ],
                 "delete",
             )

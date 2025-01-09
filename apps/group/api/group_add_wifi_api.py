@@ -2,12 +2,18 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
+
 from apps.group.serializers import GroupAddWifiInputSerializer, GroupAddWifiOutputSerializer
 from apps.group.services import group_add_wifi
+
+from rest_framework.permissions import IsAuthenticated
+
 
 class GroupAddWifiApi(APIView):
     input_serializer = GroupAddWifiInputSerializer
     output_serializer = GroupAddWifiOutputSerializer
+
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Group"],

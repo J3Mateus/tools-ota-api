@@ -7,7 +7,10 @@ from apps.device.api import (
     DeviceDeleteApi,
     DeviceGetFirmwareApi,
     DeviceGetCurrentVersionApi,
-    DeviceUpdateVersionCurrentApi
+    DeviceUpdateVersionCurrentApi,
+    DeviceAddFirmwareApi,
+    DeviceAddWifiApi,
+    DeviceInitializeOtaApi
 )
 
 urlpatterns = [
@@ -31,6 +34,9 @@ urlpatterns = [
             (
                 [
                     path("", DeviceCreateApi.as_view(), name="create_device"),
+                    path("add-firmware/", DeviceAddFirmwareApi.as_view(), name="add_firmware"),
+                    path("add-wifi/", DeviceAddWifiApi.as_view(), name="add_wifi"),
+                    path("initialize-ota/<uuid:uuid>/", DeviceInitializeOtaApi.as_view(), name="initialize_ota"),
                     path("link/<str:device_id>/<str:firmware_id>/", DeviceUpdateVersionCurrentApi.as_view(), name="link_device"),
                 ],
                 "create",

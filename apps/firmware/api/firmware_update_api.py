@@ -8,6 +8,7 @@ from apps.firmware.services import firmware_update
 from utils import get_object
 from apps.core.exceptions import NotFoundError, UpdateError
 from apps.firmware.models import Firmware
+from rest_framework.permissions import IsAuthenticated
 
 class FirmwareUpdateApi(APIView):
     """
@@ -15,6 +16,7 @@ class FirmwareUpdateApi(APIView):
     """
     input_serializer = FirmwareUpdateInputSerializer
     output_serializer = FirmwareUpdateOutputSerializer
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Firmware"],

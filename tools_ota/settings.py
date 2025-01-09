@@ -169,7 +169,9 @@ LOCAL_APPS = [
     'apps.webhook',
     'apps.group',
     'apps.firmware',
-    'apps.files'
+    'apps.files',
+    'apps.authentication',
+    'apps.role'
 ]
 
 THIRD_PARTY_APPS = [
@@ -195,13 +197,15 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-     "EXCEPTION_HANDLER": "apps.api.exception_handlers.personalized_exception_handler",
-    # 'EXCEPTION_HANDLER': 'apps.api.exception_handlers.drf_default_with_modifications_exception_handler',
+    "EXCEPTION_HANDLER": "apps.api.exception_handlers.personalized_exception_handler",
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework_api_key.permissions.HasAPIKey",
+    ]
 }
 
 
@@ -306,7 +310,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TOOLS_OTA = {
     'domain': {
-        'base_url': config('DJANGO_DOMAIN_BASE_URL', default='http://joint-sharing-cattle.ngrok-free.app')
+        'base_url': config('DJANGO_DOMAIN_BASE_URL', default='https://joint-sharing-cattle.ngrok-free.app')
     }
 }
 

@@ -1,4 +1,11 @@
-from apps.device.serializers.input_serializer import DeviceCreateInputSerializer, DeviceUpdateInputSerializer
+from apps.device.serializers.input_serializer import (
+    DeviceCreateInputSerializer,
+    DeviceUpdateInputSerializer,
+    DeviceAPIKeyCreateInputSerializer,
+    DeviceAddFirmwareInputSerializer,
+    DeviceAddWifiInputSerializer
+)
+
 from apps.device.serializers.output_serializer import (
     DeviceListOutputSerializer,
     DeviceCreateOutputSerializer,
@@ -6,6 +13,8 @@ from apps.device.serializers.output_serializer import (
     DeviceByIDOutputSerializer,
     DeviceOutputDeleteSerializer,
     DeviceFirmwareOutupSerializer,
-    DeviceGetCurrentVersionOutputSerializer
+    DeviceGetCurrentVersionOutputSerializer,
+    DeviceFirmwareOutputSerializer,
+    APIKeyOutputSerializer
 )
 from apps.device.serializers.filter_serializer import DeviceFilterSerializer

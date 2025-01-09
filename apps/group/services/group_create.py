@@ -1,8 +1,9 @@
 from apps.group.models import Group
 from django.db import transaction
+from apps.users.models import BaseUser
 
 @transaction.atomic
-def group_create(*, name: str, active: bool = True) -> Group:
+def group_create(*, name: str, active: bool = True , user: BaseUser) -> Group:
     """
     Cria um novo grupo.
 
@@ -13,9 +14,12 @@ def group_create(*, name: str, active: bool = True) -> Group:
     Returns:
         Group: A instância criada do grupo.
     """
+
     instance_group = Group(
         name=name,
-        active=active
+        active=active,
+        created_by=user
     )
+
     instance_group.save()
     return instance_group

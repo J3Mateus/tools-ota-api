@@ -16,7 +16,7 @@ def wifi_update(*, wifi: Wifi, data: Dict[str, any]) -> Tuple[Wifi, bool]:
         Tuple[Wifi, bool]: A instância atualizada e um booleano indicando se houve mudanças.
     """
     fields = ['SSDI', 'password']
-    print(data)
+
     new_wifi, has_updated,logs = model_update(instance=wifi, fields=fields, data=data)
 
     return new_wifi, has_updated

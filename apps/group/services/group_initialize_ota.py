@@ -21,6 +21,12 @@ def group_initialize_ota(*, uuid: str) -> Group:
 
     if group is None:
         raise NotFoundError(extra={"uuid": uuid})
+    
+    if group.wifi is None:
+        raise NotFoundError(message="Wifi não encontrado", extra={"uuid": uuid})
+    
+    if group.firmware is None:
+        raise NotFoundError(message="Firmware não encontrado", extra={"uuid": uuid})
 
     publish_message_to_queue(group.to_json())
     return group

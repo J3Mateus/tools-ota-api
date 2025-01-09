@@ -5,3 +5,5 @@ from apps.group.services.group_add_firmware import group_add_firmware
 from apps.group.services.group_add_device import group_add_device
 from apps.group.services.group_add_wifi import group_add_wifi
 from apps.group.services.group_initialize_ota import group_initialize_ota
+from apps.group.services.group_link_api_key import group_link_api_key
+from apps.group.services.group_remove_device import group_remove_device

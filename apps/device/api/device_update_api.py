@@ -7,11 +7,13 @@ from apps.device.services import device_update
 from utils import get_object
 from apps.core.exceptions import NotFoundError, UpdateError
 from apps.device.models import Device
+from rest_framework.permissions import IsAuthenticated
 
 class DeviceUpdateApi(APIView):
     input_serializer = DeviceUpdateInputSerializer
     output_serializer = DeviceUpdateOutputSerializer
-
+    permission_classes = [IsAuthenticated]
+    
     @swagger_auto_schema(
         tags=["Device"],
         operation_summary="Atualizar um dispositivo",

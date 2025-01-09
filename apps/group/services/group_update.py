@@ -15,7 +15,7 @@ def group_update(*, group: Group, data: Dict[str, any]) -> Tuple[Group, bool]:
     Returns:
         Tuple[Group, bool]: A instância atualizada e um booleano indicando se houve mudanças.
     """
-    fields = ['name', 'active']
+    fields = ['name']
 
     new_group, has_updated, logs = model_update(instance=group, fields=fields, data=data)
 

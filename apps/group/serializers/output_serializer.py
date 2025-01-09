@@ -3,6 +3,7 @@ from rest_framework import serializers
 from apps.device.serializers.output_serializer import DeviceByIDOutputSerializer
 from apps.firmware.serializers.output_serializer import FirmwareByIDOutputSerializer
 from apps.group.models import Group
+from apps.users.serializers.output_serializer import UserApiKeyOutputSerializer
 from apps.wifi.serializers.output_serializer import WifiByIDOutputSerializer
 
 class GroupListOutputSerializer(serializers.Serializer):
@@ -13,6 +14,7 @@ class GroupListOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
     
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -26,6 +28,7 @@ class GroupCreateOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
 
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -39,6 +42,7 @@ class GroupUpdateOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     Wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
 
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -52,6 +56,7 @@ class GroupByIDOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer()
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
 
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -65,6 +70,7 @@ class GroupOutputDeleteSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)    
 
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -78,6 +84,7 @@ class GroupAddFirmwareOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)    
 
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -90,6 +97,7 @@ class GroupAddDeviceOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
 
     def get_device(self, obj: Group):
         devices = obj.devices.all()
@@ -103,7 +111,21 @@ class GroupAddWifiOutputSerializer(serializers.Serializer):
     firmware = FirmwareByIDOutputSerializer(allow_null=True)
     device = serializers.SerializerMethodField()
     wifi   = WifiByIDOutputSerializer(allow_null=True)
-    
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
+        
+    def get_device(self, obj: Group):
+        devices = obj.devices.all()
+        return DeviceByIDOutputSerializer(devices,many=True).data
+
+class GroupRemoveDeviceOutputSerializer(serializers.Serializer):
+    uuid = serializers.UUIDField()
+    name = serializers.CharField()
+    active = serializers.BooleanField()
+    firmware = FirmwareByIDOutputSerializer(allow_null=True)
+    device = serializers.SerializerMethodField()
+    wifi   = WifiByIDOutputSerializer(allow_null=True)
+    api_key = UserApiKeyOutputSerializer(allow_null=True)
+
     def get_device(self, obj: Group):
         devices = obj.devices.all()
         return DeviceByIDOutputSerializer(devices,many=True).data

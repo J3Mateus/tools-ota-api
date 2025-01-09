@@ -3,12 +3,15 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 
+from apps.core.permission.api_key_permission import APIKeyPermission
 from apps.device.services import device_update_version_current
 from apps.device.serializers.output_serializer import DeviceGetCurrentVersionOutputSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class DeviceUpdateVersionCurrentApi(APIView):
     output_serializer = DeviceGetCurrentVersionOutputSerializer
-
+    permission_classes = [APIKeyPermission | IsAuthenticated]
+    
     @swagger_auto_schema(
         tags=["Device"],
         operation_summary="Insere qual é a versão que está rodando atualmente no device",

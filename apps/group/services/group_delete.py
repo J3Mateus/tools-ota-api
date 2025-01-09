@@ -1,9 +1,10 @@
 from typing import Optional
 from apps.group.models import Group
 from apps.core.exceptions import NotFoundError
+from apps.users.models import BaseUser
 from utils import get_object
 
-def group_delete(*, uuid: str) -> Group:
+def group_delete(*, uuid: str,user: BaseUser) -> Group:
     """
     Deleta um grupo pelo UUID.
 
@@ -21,5 +22,5 @@ def group_delete(*, uuid: str) -> Group:
     if group is None:
         raise NotFoundError(extra={"uuid": uuid})
 
-    group.delete()
+    group.delete(user)
     return group

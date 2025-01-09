@@ -30,7 +30,7 @@ def firmware_add_file(*,
     instance_file.save()
 
     firmware.file =  instance_file
-    print(instance_file)
+   
     firmware.save()
 
     return firmware

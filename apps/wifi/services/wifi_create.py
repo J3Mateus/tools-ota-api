@@ -1,8 +1,9 @@
+from apps.users.models import BaseUser
 from apps.wifi.models import Wifi
 from django.db import transaction
 
 @transaction.atomic
-def wifi_create(*, SSDI: str, password: str):
+def wifi_create(*, SSDI: str, password: str,user: BaseUser):
     """
     Creates a Wifi instance.
     
@@ -15,7 +16,8 @@ def wifi_create(*, SSDI: str, password: str):
     """
     instance_wifi = Wifi(
         SSDI=SSDI,
-        password=password
+        password=password,
+        created_by=user
     )
     
     instance_wifi.save()

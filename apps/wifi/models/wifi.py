@@ -8,6 +8,13 @@ class Wifi(BaseModel):
     SSDI        = models.CharField('SSDI', max_length=50)
     password    = models.CharField('Senha', max_length=100)
   
+    def deactivate(self,user):
+        """
+        Método para desativar o Wi-Fi e desvinculá-lo de todos os grupos.
+        """
+        from apps.group.models import Group  
+        Group.objects.filter(wifi=self).update(wifi=None)
+        self.delete(user)
 
     class Meta:
         app_label = 'wifi'

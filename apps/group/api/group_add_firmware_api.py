@@ -2,12 +2,17 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
+
 from apps.group.serializers import GroupAddFirmwareInputSerializer, GroupAddFirmwareOutputSerializer
 from apps.group.services import group_add_firmware
+
+from rest_framework.permissions import IsAuthenticated
 
 class GroupAddFirmwareApi(APIView):
     input_serializer = GroupAddFirmwareInputSerializer
     output_serializer = GroupAddFirmwareOutputSerializer
+
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Group"],

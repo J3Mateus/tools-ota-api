@@ -7,3 +7,5 @@ from apps.group.api.group_add_firmware_api import GroupAddFirmwareApi
 from apps.group.api.group_add_device_api import GroupAddDeviceApi
 from apps.group.api.group_add_wifi_api import GroupAddWifiApi
 from apps.group.api.group_initialize_ota_api import GroupInitializeOtaApi
+from apps.group.api.group_link_api_key import GroupLinkApiKeyApi
+from apps.group.api.group_remove_device_api import GroupRemoveDeviceApi

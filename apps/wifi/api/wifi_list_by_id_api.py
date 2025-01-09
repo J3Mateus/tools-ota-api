@@ -4,19 +4,21 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Imports relacionados à autenticação da API
-from rest_framework_api_key.permissions import HasAPIKey
+from rest_framework.permissions import IsAuthenticated
+
 # Imports relacionados ao Swagger
 from drf_yasg.utils import swagger_auto_schema
 
 # Imports dos Serializers e Services
+from apps.api.mixins import ApiAuthMixin
 from apps.wifi.selectors import wifi_list_by_id
 from apps.wifi.serializers import WifiByIDOutputSerializer
 
 
-class WifiByIDApi(APIView):
+class WifiByIDApi(ApiAuthMixin,APIView):
     """Rota para buscar uma rede Wifi pelo UUID."""
+    permission_classes = [IsAuthenticated]
     output_serializer = WifiByIDOutputSerializer
-    # permission_classes = [HasAPIKey]
 
     @swagger_auto_schema(
         request_body=None,

@@ -18,3 +18,10 @@ class GroupAddDeviceInputSerializer(serializers.Serializer):
 class GroupAddWifiInputSerializer(serializers.Serializer):
     wifi_id = serializers.UUIDField()
     group_id = serializers.UUIDField()
+
+class GroupAPIKeyCreateInputSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=255)
+
+class GroupRemoveDeviceInputSerializer(serializers.Serializer):
+    device_id = serializers.UUIDField()
+    group_id = serializers.UUIDField()

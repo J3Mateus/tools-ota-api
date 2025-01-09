@@ -4,10 +4,12 @@ from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 from apps.device.serializers import DeviceByIDOutputSerializer
 from apps.device.selectors import device_list_by_id
+from rest_framework.permissions import IsAuthenticated
 
 class DeviceByIDApi(APIView):
     output_serializer = DeviceByIDOutputSerializer
-
+    permission_classes = [IsAuthenticated]
+    
     @swagger_auto_schema(
         tags=["Device"],
         operation_summary="Buscar um dispositivo",

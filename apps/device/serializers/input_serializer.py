@@ -5,3 +5,14 @@ class DeviceCreateInputSerializer(serializers.Serializer):
 
 class DeviceUpdateInputSerializer(serializers.Serializer):
     code = serializers.CharField(max_length=255, required=False)
+
+class DeviceAPIKeyCreateInputSerializer(serializers.Serializer):
+    code = serializers.CharField(max_length=255)
+
+class DeviceAddFirmwareInputSerializer(serializers.Serializer):
+    firmware_id = serializers.UUIDField()
+    device_id = serializers.UUIDField()
+
+class DeviceAddWifiInputSerializer(serializers.Serializer):
+    wifi_id = serializers.UUIDField()
+    device_id = serializers.UUIDField()

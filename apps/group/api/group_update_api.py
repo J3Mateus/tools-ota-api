@@ -2,15 +2,18 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
+
 from apps.group.serializers import GroupUpdateInputSerializer, GroupUpdateOutputSerializer
 from apps.group.services import group_update
 from utils import get_object
 from apps.core.exceptions import NotFoundError, UpdateError
 from apps.group.models import Group
+from rest_framework.permissions import IsAuthenticated
 
 class GroupUpdateApi(APIView):
     input_serializer = GroupUpdateInputSerializer
     output_serializer = GroupUpdateOutputSerializer
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Group"],

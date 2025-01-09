@@ -2,10 +2,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
+
 from apps.firmware.serializers.output_serializer import FirmwareListOutputSerializer
 from apps.firmware.serializers.filter_serializer import FirmwareFilterSerializer
 from apps.firmware.selectors import firmware_list
 from apps.api.pagination import LimitOffsetPagination, get_paginated_response
+from rest_framework.permissions import IsAuthenticated
+
+from apps.users.selectors import user_get_login_data
 
 class FirmwareListApi(APIView):
     """
@@ -16,6 +20,7 @@ class FirmwareListApi(APIView):
 
     output_serializer = FirmwareListOutputSerializer
     filter_serializer = FirmwareFilterSerializer
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Firmware"],
@@ -27,14 +32,15 @@ class FirmwareListApi(APIView):
     def get(self, request):
         filters_serializer = self.filter_serializer(data=request.query_params)
         filters_serializer.is_valid(raise_exception=True)
+        user = user_get_login_data(user=request.user)
 
         all_records = request.query_params.get("all")
         if all_records == "true":
-            firmwares = firmware_list(filters=filters_serializer.validated_data)
+            firmwares = firmware_list(filters=filters_serializer.validated_data,user=user)
             serializer = self.output_serializer(firmwares, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-        firmwares = firmware_list(filters=filters_serializer.validated_data)
+        firmwares = firmware_list(filters=filters_serializer.validated_data,user=user)
         return get_paginated_response(
             pagination_class=self.Pagination,
             serializer_class=self.output_serializer,

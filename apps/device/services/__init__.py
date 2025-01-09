@@ -2,3 +2,6 @@ from apps.device.services.device_create import device_create
 from apps.device.services.device_delete import device_delete
 from apps.device.services.device_update import device_update
 from apps.device.services.device_update_version_current import device_update_version_current
+from apps.device.services.device_add_firmware import device_add_firmware
+from apps.device.services.device_add_wifi import device_add_wifi
+from apps.device.services.device_initialize_ota import device_initialize_ota

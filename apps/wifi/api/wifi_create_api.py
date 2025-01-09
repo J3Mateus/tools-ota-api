@@ -7,16 +7,19 @@ from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 
 # Imports dos Serializers e Services
+from rest_framework.permissions import IsAuthenticated
 from apps.wifi.serializers import WifiCreateInputSerializer, WifiCreateOutputSerializer
 from apps.wifi.services import wifi_create
 
+
+from apps.users.selectors import user_get_login_data
 
 class WifiCreateApi(APIView):
     """Rota de criação de rede Wifi."""
 
     input_serializer = WifiCreateInputSerializer
     output_serializer = WifiCreateOutputSerializer
-    # permission_classes = [HasAPIKey]
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Wifi"],
@@ -29,6 +32,8 @@ class WifiCreateApi(APIView):
         serializer = self.input_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        wifi = wifi_create(**serializer.validated_data)
+        user = user_get_login_data(user=request.user)
+        
+        wifi = wifi_create(**serializer.validated_data,user=user)
         data = self.output_serializer(wifi).data
         return Response(status=status.HTTP_201_CREATED, data=data)

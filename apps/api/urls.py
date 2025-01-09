@@ -5,5 +5,7 @@ urlpatterns = [
     path("group/", include(("apps.group.urls", "Group"))),
     path("device/", include(("apps.device.urls", "Device"))),
     path("firmware/", include(("apps.firmware.urls", "Firmware"))),
-        # path("firmware/", include(("apps.firmware.urls", "Firmware"))),
+    path("auth/", include(("apps.authentication.urls", "authentication"))),
+    path("user/", include(("apps.users.urls", "User"))),
+    # path("firmware/", include(("apps.firmware.urls", "Firmware"))),
 ]

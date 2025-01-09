@@ -1,9 +1,10 @@
 from typing import Optional
+from apps.users.models import BaseUser
 from apps.wifi.models import Wifi
 from apps.core.exceptions import NotFoundError
 from utils import get_object
 
-def wifi_delete(*, uuid: str) -> Wifi:
+def wifi_delete(*, uuid: str,user: BaseUser) -> Wifi:
     """
     Deletes a Wifi instance by its UUID.
     
@@ -23,5 +24,5 @@ def wifi_delete(*, uuid: str) -> Wifi:
             "uuid": uuid
         })
     
-    wifi.delete()
+    wifi.deactivate(user)
     return wifi

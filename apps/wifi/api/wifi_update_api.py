@@ -4,12 +4,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Imports relacionados à autenticação da API
-from rest_framework_api_key.permissions import HasAPIKey
+from rest_framework.permissions import IsAuthenticated
 
 # Imports do drf-yasg (geração de documentação Swagger)
 from drf_yasg.utils import swagger_auto_schema
 
 # Imports de exceptions
+from apps.api.mixins import ApiAuthMixin
 from apps.core.exceptions import NotFoundError, UpdateError
 
 # Imports de models
@@ -19,10 +20,12 @@ from apps.wifi.serializers import WifiUpdateInputSerializer, WifiUpdateOutputSer
 from apps.wifi.services import wifi_update
 from utils import get_object
 
-class WifiUpdateApi(APIView):
+class WifiUpdateApi(ApiAuthMixin,APIView):
+
     input_serializer = WifiUpdateInputSerializer
     output_serializer = WifiUpdateOutputSerializer
-    # permission_classes = [HasAPIKey]
+
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Wifi"],

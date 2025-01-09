@@ -8,7 +8,9 @@ from apps.group.api import (
     GroupAddFirmwareApi,
     GroupAddDeviceApi,
     GroupAddWifiApi,
-    GroupInitializeOtaApi
+    GroupInitializeOtaApi,
+    GroupLinkApiKeyApi,
+    GroupRemoveDeviceApi
 )
 
 
@@ -35,6 +37,7 @@ urlpatterns = [
                     path("add-device/", GroupAddDeviceApi.as_view(), name="add_device"),
                     path("add-wifi/", GroupAddWifiApi.as_view(), name="add_wifi"),
                     path("initialize-ota/<uuid:uuid>/", GroupInitializeOtaApi.as_view(), name="initialize_ota"),
+                    path("link-api-key/<uuid:group_uuid>/<uuid:api_key_uuid>/", GroupLinkApiKeyApi.as_view(),name="link_api_key"),
                 ],
                 "create",
             )
@@ -57,6 +60,7 @@ urlpatterns = [
             (
                 [
                     path("<uuid:uuid>/", GroupDeleteApi.as_view(), name="delete_group"),
+                    path("remove-device/<uuid:group_uuid>/<uuid:device_uuid>/",GroupRemoveDeviceApi.as_view(),name="remove_device")
                 ],
                 "delete",
             )

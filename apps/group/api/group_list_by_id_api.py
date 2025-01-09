@@ -4,9 +4,11 @@ from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 from apps.group.serializers import GroupByIDOutputSerializer
 from apps.group.selectors import group_list_by_id
+from rest_framework.permissions import IsAuthenticated
 
 class GroupByIDApi(APIView):
     output_serializer = GroupByIDOutputSerializer
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(
         tags=["Group"],

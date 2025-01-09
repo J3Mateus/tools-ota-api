@@ -15,8 +15,8 @@ def firmware_update(*, firmware: Firmware, data: Dict[str, any]) -> Tuple[Firmwa
     Returns:
         Tuple[Firmware, bool]: A instância atualizada e um booleano indicando se houve mudanças.
     """
-    fields = ['name', 'version', 'code', 'link_bin']
+    fields = ['name', 'version', 'code', 'use_code']
 
     new_firmware, has_updated, logs = model_update(instance=firmware, fields=fields, data=data)
-    print(logs)
+
     return new_firmware, has_updated
