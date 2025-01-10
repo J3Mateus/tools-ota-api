@@ -98,6 +98,13 @@ class Group(BaseModel):
         if self.devices.exists():
             devices_data = list(self.devices.values('uuid', 'code'))  # Incluindo os campos relevantes de cada dispositivo
 
+        api_key_data = None
+        if self.api_key:
+            api_key_data = {
+                'uuid': self.api_key.id,
+                'key': self.api_key.key
+            }
+
         # Estruturando os dados do grupo
         group_data = {
             'uuid': self.uuid,
@@ -106,6 +113,7 @@ class Group(BaseModel):
             'wifi': wifi_data,
             'firmware': firmware_data,
             'devices': devices_data,
+            'api_key': api_key_data,            
         }
 
         # Convertendo UUIDs para string
