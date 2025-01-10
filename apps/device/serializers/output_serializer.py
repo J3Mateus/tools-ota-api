@@ -67,7 +67,6 @@ class DeviceGetCurrentVersionOutputSerializer(serializers.Serializer):
     uuid = serializers.UUIDField()
     version = serializers.CharField()
     device = DeviceByIDOutputSerializer()
-    firmware = FirmwareByIDOutputSerializer()
     wifi     = WifiByIDOutputSerializer(allow_null=True)
     api_key = UserApiKeyOutputSerializer(allow_null=True)
     
