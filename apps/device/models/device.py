@@ -61,7 +61,7 @@ class Device(BaseModel):
     def __str__(self):
         return self.code
     
-    def to_json(self,apiKey: str):
+    def to_json(self):
         """
         Converte uma instância do modelo Device para um formato JSON, incluindo informações dos modelos relacionados
         como Wifi e Firmware
