@@ -10,7 +10,8 @@ from apps.device.api import (
     DeviceUpdateVersionCurrentApi,
     DeviceAddFirmwareApi,
     DeviceAddWifiApi,
-    DeviceInitializeOtaApi
+    DeviceInitializeOtaApi,
+    DeviceLinkApiKeyApi
 )
 
 urlpatterns = [
@@ -38,6 +39,7 @@ urlpatterns = [
                     path("add-wifi/", DeviceAddWifiApi.as_view(), name="add_wifi"),
                     path("initialize-ota/<uuid:uuid>/", DeviceInitializeOtaApi.as_view(), name="initialize_ota"),
                     path("link/<str:device_id>/<str:firmware_id>/", DeviceUpdateVersionCurrentApi.as_view(), name="link_device"),
+                    path("link-api-key/<uuid:device_uuid>/<uuid:api_key_uuid>/", DeviceLinkApiKeyApi.as_view(),name="link_api_key"),
                 ],
                 "create",
             )

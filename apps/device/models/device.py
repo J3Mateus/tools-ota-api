@@ -61,7 +61,7 @@ class Device(BaseModel):
     def __str__(self):
         return self.code
     
-    def to_json(self):
+    def to_json(self,apiKey: str):
         """
         Converte uma instância do modelo Device para um formato JSON, incluindo informações dos modelos relacionados
         como Wifi e Firmware
@@ -94,6 +94,13 @@ class Device(BaseModel):
                 'version': self.firmware.version,
                 'code': self.firmware.code,
             }
+        
+        api_key_data = None
+        if self.api_key:
+            api_key_data = {
+                'uuid': self.api_key.id,
+                'key': self.api_key.key
+            }
 
         # Estruturando os dados do grupo
         device_data = {
@@ -102,6 +109,7 @@ class Device(BaseModel):
             'active': self.is_deleted,
             'wifi': wifi_data,
             'firmware': firmware_data,
+            'api_key': api_key_data,
             'devices': [],
         }
 

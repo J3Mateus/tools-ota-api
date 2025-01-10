@@ -27,6 +27,9 @@ def device_initialize_ota(*, uuid: str) -> Device:
     
     if device.firmware is None:
         raise NotFoundError(message="Firmware não encontrado", extra={"uuid": uuid})
+    
+    if device.api_key is None:
+        raise NotFoundError(message="Api Key não encontrado", extra={"uuid": uuid})
 
     publish_message_to_queue(device.to_json())
     return device

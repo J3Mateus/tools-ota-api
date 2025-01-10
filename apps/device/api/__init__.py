@@ -9,3 +9,4 @@ from apps.device.api.device_update_version_current import DeviceUpdateVersionCur
 from apps.device.api.device_add_firmware_api import DeviceAddFirmwareApi
 from apps.device.api.device_add_wifi_api import DeviceAddWifiApi
 from apps.device.api.device_initialize_ota_api import DeviceInitializeOtaApi
+from apps.device.api.device_link_api_key import DeviceLinkApiKeyApi

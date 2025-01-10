@@ -28,5 +28,8 @@ def group_initialize_ota(*, uuid: str) -> Group:
     if group.firmware is None:
         raise NotFoundError(message="Firmware não encontrado", extra={"uuid": uuid})
 
+    if group.api_key is None:
+        raise NotFoundError(message="Api Key não encontrado", extra={"uuid": uuid})
+    
     publish_message_to_queue(group.to_json())
     return group

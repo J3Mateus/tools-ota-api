@@ -5,3 +5,4 @@ from apps.device.services.device_update_version_current import device_update_ver
 from apps.device.services.device_add_firmware import device_add_firmware
 from apps.device.services.device_add_wifi import device_add_wifi
 from apps.device.services.device_initialize_ota import device_initialize_ota
+from apps.device.services.device_link_api_key import device_link_api_key

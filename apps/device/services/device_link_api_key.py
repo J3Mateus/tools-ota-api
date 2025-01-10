@@ -1,30 +1,30 @@
 from apps.core.exceptions import BadRequestError, DuplicateResourceError, NotFoundError
-from apps.group.models import Group
+from apps.device.models import Device
 from apps.users.models import UserAPIKey
 from utils import get_object
 
 
-def group_link_api_key(*, group_uuid:str,api_key_uuid: str) -> Group:
+def device_link_api_key(*, device_uuid:str,api_key_uuid: str) -> Device:
 
     """
-    Link an api key to a group
-    :param group_uuid:
+    Link an api key to a device
+    :param device_uuid:
     :param api_key_uuid:
-    :return: Group
+    :return: Device
     """
     
-    api_key_in_using = Group.objects.filter(api_key__id=api_key_uuid).exists()
+    api_key_in_using = Device.objects.filter(api_key__id=api_key_uuid).exists()
 
     if api_key_in_using:
         raise DuplicateResourceError(extra={
             "uuid": api_key_uuid
         })
     
-    group = get_object(Group, uuid=group_uuid)
+    device = get_object(Device, uuid=device_uuid)
 
-    if not group:
+    if not device:
         raise NotFoundError(extra={
-            "uuid": group_uuid
+            "uuid": device_uuid
         })
     
     api_key = get_object(UserAPIKey, id=api_key_uuid)
@@ -39,8 +39,8 @@ def group_link_api_key(*, group_uuid:str,api_key_uuid: str) -> Group:
             "api_key": "Api key is deleted"
         })
     
-    group.api_key = api_key
-    print(api_key)
-    group.save()
+    device.api_key = api_key
 
-    return group
+    device.save()
+
+    return device
