@@ -13,13 +13,6 @@ def device_link_api_key(*, device_uuid:str,api_key_uuid: str) -> Device:
     :return: Device
     """
     
-    api_key_in_using = Device.objects.filter(api_key__id=api_key_uuid).exists()
-
-    if api_key_in_using:
-        raise DuplicateResourceError(extra={
-            "uuid": api_key_uuid
-        })
-    
     device = get_object(Device, uuid=device_uuid)
 
     if not device:

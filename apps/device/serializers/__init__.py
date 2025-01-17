@@ -3,7 +3,8 @@ from apps.device.serializers.input_serializer import (
     DeviceUpdateInputSerializer,
     DeviceAPIKeyCreateInputSerializer,
     DeviceAddFirmwareInputSerializer,
-    DeviceAddWifiInputSerializer
+    DeviceAddWifiInputSerializer,
+    DeviceStatusBuildInputSerializer
 )
 
 from apps.device.serializers.output_serializer import (

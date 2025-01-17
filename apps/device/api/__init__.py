@@ -10,3 +10,6 @@ from apps.device.api.device_add_firmware_api import DeviceAddFirmwareApi
 from apps.device.api.device_add_wifi_api import DeviceAddWifiApi
 from apps.device.api.device_initialize_ota_api import DeviceInitializeOtaApi
 from apps.device.api.device_link_api_key import DeviceLinkApiKeyApi
+from apps.device.api.device_forced_update_api import DeviceForcedUpdateApi
+from apps.device.api.device_remove_firmware import DeviceRemoveFirmwareApi
+from apps.device.api.device_status_build_api import DeviceStatusBuildApi

@@ -1,7 +1,9 @@
+from apps.core.exceptions import DuplicateResourceError
 from apps.firmware.models import Firmware
 from django.db import transaction
 
 from apps.users.models import BaseUser
+from utils import get_object
 
 @transaction.atomic
 def firmware_create(*, name: str, version: str, code: str = None,use_code: bool = True,user: BaseUser) -> Firmware:
@@ -18,6 +20,13 @@ def firmware_create(*, name: str, version: str, code: str = None,use_code: bool 
     Returns:
         Firmware: A instância criada do firmware.
     """
+
+    existent_firmware = get_object(Firmware,code=code)
+    if existent_firmware:
+        raise DuplicateResourceError(extra={
+            "code": code
+        })
+    
     instance_firmware = Firmware(
         name=name,
         version=version,

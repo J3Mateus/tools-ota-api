@@ -6,3 +6,6 @@ from apps.device.services.device_add_firmware import device_add_firmware
 from apps.device.services.device_add_wifi import device_add_wifi
 from apps.device.services.device_initialize_ota import device_initialize_ota
 from apps.device.services.device_link_api_key import device_link_api_key
+from apps.device.services.device_forced_update import device_forced_update
+from apps.device.services.device_remove_firmware import device_remove_firmware
+from apps.device.services.device_status_build import device_status_build

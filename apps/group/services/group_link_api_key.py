@@ -13,13 +13,6 @@ def group_link_api_key(*, group_uuid:str,api_key_uuid: str) -> Group:
     :return: Group
     """
     
-    api_key_in_using = Group.objects.filter(api_key__id=api_key_uuid).exists()
-
-    if api_key_in_using:
-        raise DuplicateResourceError(extra={
-            "uuid": api_key_uuid
-        })
-    
     group = get_object(Group, uuid=group_uuid)
 
     if not group:
