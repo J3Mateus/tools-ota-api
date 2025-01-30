@@ -58,7 +58,7 @@ urlpatterns = [
             (
                 [
                     path("<uuid:uuid>/", DeviceUpdateApi.as_view(), name="update_device"),
-                    path("<uuid:uuid>/", DeviceUnDeleteApi.as_view(), name="undelete_device"),
+                    path("<uuid:uuid>/undelete", DeviceUnDeleteApi.as_view(), name="undelete_device"),
                 ],
                 "update",
             )
