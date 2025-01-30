@@ -14,7 +14,8 @@ from apps.device.api import (
     DeviceLinkApiKeyApi,
     DeviceForcedUpdateApi,
     DeviceRemoveFirmwareApi,
-    DeviceStatusBuildApi
+    DeviceStatusBuildApi,
+    DeviceUnDeleteApi
 )
 
 urlpatterns = [
@@ -57,6 +58,7 @@ urlpatterns = [
             (
                 [
                     path("<uuid:uuid>/", DeviceUpdateApi.as_view(), name="update_device"),
+                    path("<uuid:uuid>/", DeviceUnDeleteApi.as_view(), name="undelete_device"),
                 ],
                 "update",
             )

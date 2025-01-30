@@ -13,3 +13,4 @@ from apps.device.api.device_link_api_key import DeviceLinkApiKeyApi
 from apps.device.api.device_forced_update_api import DeviceForcedUpdateApi
 from apps.device.api.device_remove_firmware import DeviceRemoveFirmwareApi
 from apps.device.api.device_status_build_api import DeviceStatusBuildApi
+from apps.device.api.device_undelete_api import DeviceUnDeleteApi

@@ -9,3 +9,4 @@ from apps.device.services.device_link_api_key import device_link_api_key
 from apps.device.services.device_forced_update import device_forced_update
 from apps.device.services.device_remove_firmware import device_remove_firmware
 from apps.device.services.device_status_build import device_status_build
+from apps.device.services.device_undelete import device_undelete
