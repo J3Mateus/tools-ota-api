@@ -21,11 +21,11 @@ def firmware_create(*, name: str, version: str, code: str = None,use_code: bool 
         Firmware: A instância criada do firmware.
     """
 
-    existent_firmware = get_object(Firmware,code=code)
-    if existent_firmware:
-        raise DuplicateResourceError(extra={
-            "code": code
-        })
+    # existent_firmware = get_object(Firmware,code=code)
+    # if existent_firmware:
+    #     raise DuplicateResourceError(extra={
+    #         "code": code
+    #     })
     
     instance_firmware = Firmware(
         name=name,

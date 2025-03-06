@@ -18,7 +18,6 @@ def group_list_by_id(*, uuid: str) -> Optional[Group]:
     """
     group = get_object(Group, uuid=uuid)
 
-    print(group.api_key)
     if group is None:
         raise NotFoundError(extra={"uuid": uuid})
 

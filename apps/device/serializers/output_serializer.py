@@ -65,7 +65,7 @@ class DeviceByIDOutputSerializer(serializers.Serializer):
         try:
             return DeviceStatusBuild.objects.get(device=obj).status
         except DeviceStatusBuild.DoesNotExist:
-            return None
+            return 'No Status'
         
 class DeviceOutputDeleteSerializer(serializers.Serializer):
     uuid = serializers.UUIDField()

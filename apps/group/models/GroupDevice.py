@@ -12,4 +12,4 @@ class GroupDevice(BaseModel):
 
     class Meta:
         app_label = 'group'
-        db_table  = f'{app_label}_firmware'
+        db_table  = f'{app_label}_device'
