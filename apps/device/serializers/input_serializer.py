@@ -22,4 +22,4 @@ class DeviceAddWifiInputSerializer(serializers.Serializer):
 
 class DeviceStatusBuildInputSerializer(serializers.Serializer):
     device_code = serializers.CharField()
-    status = serializers.ChoiceField(choices=[ tag for tag in ['in_build', 'completed_build']])
+    status = serializers.ChoiceField(choices=[ tag for tag in ['in_build', 'completed_build','in_processing', 'waiting_to_be_received','received']])

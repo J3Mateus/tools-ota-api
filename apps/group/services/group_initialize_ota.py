@@ -1,5 +1,6 @@
 from typing import Optional
 from apps.core.services.rabbitmq_service import publish_message_to_queue
+from apps.device.services import device_status_build
 from apps.group.models import Group
 from apps.core.exceptions import NotFoundError
 from utils import get_object
@@ -31,5 +32,9 @@ def group_initialize_ota(*, uuid: str) -> Group:
     if group.api_key is None:
         raise NotFoundError(message="Api Key não encontrado", extra={"uuid": uuid})
     
+    devices = group.devices.all()
+    for device in devices:
+        device_status_build(device_code=device.code, status='in_processing')
+        
     publish_message_to_queue(group.to_json())
     return group

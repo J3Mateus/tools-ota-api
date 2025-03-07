@@ -7,6 +7,9 @@ from enum import Enum
 class DeviceStatus(Enum):
     IN_BUILD = 'in_build'
     COMPLETED_BUILD = 'completed_build'
+    IN_PROCESSING = 'in_processing'
+    WAITING_TO_BE_RECEIVED = 'waiting_to_be_received'
+    RECEIVED = 'received'
 
 def device_status_build(*, device_code:str, status: DeviceStatus) -> DeviceStatusBuild:
 
