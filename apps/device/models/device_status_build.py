@@ -15,7 +15,7 @@ class DeviceStatusBuild(BaseModel):
         (IN_BUILD, 'In Build'),
         (COMPLETED_BUILD, 'Completed Build'),
         (IN_PROCESSING, 'In Processing'),
-        (WAITING_TO_BE_RECEIVED, 'Waiting to be Received')
+        (WAITING_TO_BE_RECEIVED, 'Waiting to be Received'),
         (RECEIVED, 'Received')
     ]
 
