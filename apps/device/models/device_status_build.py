@@ -29,7 +29,7 @@ class DeviceStatusBuild(BaseModel):
         verbose_name="Devices com status"
     )
     status = models.CharField(
-        max_length=20,
+        max_length=22,
         choices=STATUS_CHOICES,
         default=IN_PROCESSING,
         verbose_name="Status"
