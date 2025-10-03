@@ -40,7 +40,7 @@ Após configurar o ambiente virtual, você pode instalar as dependências do pro
 ## Passo 4: Configurando o arquivo .env
 1. Crie um arquivo chamado .env na raiz do seu projeto.
   ```env
-        DOCKER_PROJECT_NAME=Ttools_ota_api
+        DOCKER_PROJECT_NAME=tools_ota
 
         DOCKER_NGINX_PORT=8081
 
@@ -51,18 +51,12 @@ Após configurar o ambiente virtual, você pode instalar as dependências do pro
         DOCKER_VOLUME_STATIC=./run/static
         DOCKER_VOLUME_MEDIA=./run/media
 
-        DJANGO_DATABASE_URL="postgres://postgres:1234@172.17.0.1:5432/api_pesquisa"
+        DJANGO_DATABASE_URL="postgres://postgres:1234@172.17.0.1:5432/tool_ota"
 
         DJANGO_ALLOWED_HOSTS=*
 
-        DJANGO_WHATSAPP_API=https://wa.me
-        DJANGO_PHONE_BOT=numero_atual_do_bot
 
-        DOCKER_EXTRA_HOSTS_API=api.sebrae.al:172.17.0.1
-        DOCKER_EXTRA_HOSTS_PROPOSTA=proposta.sebrae.al:172.17.0.1
-        DOCKER_EXTRA_HOSTS_SOL=sol.sebrae.al:172.17.0.1
-        DOCKER_EXTRA_HOSTS_INTEGRABACKEND=integra.sebrae.al:172.17.0.1
-        DOCKER_EXTRA_HOSTS_AUTENTICADOR=autenticador.sebrae.al:172.17.0.1s
+
    ```
 ## Passo 5: Configurando o Banco de Dados
 
