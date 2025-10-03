@@ -1,4 +1,4 @@
-# README - API PESQUISA ZAP
+# README - TOOLS OTA API
 
 Este é um guia passo a passo para configurar backend do API PESQUISA ZAP, desde a criação de um ambiente virtual até a execução do projeto.
 
