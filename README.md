@@ -40,7 +40,7 @@ Após configurar o ambiente virtual, você pode instalar as dependências do pro
 ## Passo 4: Configurando o arquivo .env
 1. Crie um arquivo chamado .env na raiz do seu projeto.
   ```env
-        DOCKER_PROJECT_NAME=api_pesquisa
+        DOCKER_PROJECT_NAME=Ttools_ota_api
 
         DOCKER_NGINX_PORT=8081
 
