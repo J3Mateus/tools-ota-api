@@ -1,6 +1,6 @@
 # README - TOOLS OTA API
 
-Este é um guia passo a passo para configurar backend do API PESQUISA ZAP, desde a criação de um ambiente virtual até a execução do projeto.
+Este é um guia passo a passo para configurar backend do  TOOLS OTA API, desde a criação de um ambiente virtual até a execução do projeto.
 
 ## Passo 1: Pré-requisitos
 
